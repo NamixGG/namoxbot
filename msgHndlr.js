@@ -41,7 +41,7 @@ module.exports = msgHandler = async (client, message) => {
             error: {
                 St: '[❗] Erro',
                 Qm: '[❗] Terjadi kesalahan, mungkin themenya tidak tersedia!',
-                Yt3: '[❗] Terjadi kesalahan, tidak dapat meng konversi ke mp3!',
+                Yt3: '[❗] Terjadi kesalahan,x tidak dapat meng konversi ke mp3!',
                 Yt4: '[❗] Terjadi kesalahan, mungkin error di sebabkan oleh sistem.',
                 Ig: '[❗] Midia esta em uma conta privada',
                 Ki: '[❗] Bot tidak bisa mengeluarkan admin group!',
