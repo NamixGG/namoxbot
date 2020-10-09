@@ -3,6 +3,15 @@ const welcome = require('./lib/welcome')
 const msgHandler = require('./msgHndlr')
 const options = require('./options')
 
+
+
+var server_port = process.env.YOUR_PORT || process.env.PORT || 80;
+var server_host = process.env.YOUR_HOST || '0.0.0.0';
+server.listen(server_port, server_host, function() {
+    console.log('Listening on port %d', server_port);
+});
+
+
 const start = async (client = new Client()) => {
         console.log('[SERVER] Server Started!')
         // Force it to keep the current session
