@@ -5,12 +5,12 @@ const options = require('./options')
 
 
 
+var server = http.createServer((req, res) => {
+  console.log('ABERTOOOO')
+});
 
-const host = '0.0.0.0';
-const port = process.env.PORT || 3000;
-
-app.listen(port, host, function() {
-  console.log("Server started.......");
+server.listen(process.env.PORT || 80, () => {
+  console.log("Listening on port 80");
 });
 
 
