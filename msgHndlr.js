@@ -132,7 +132,7 @@ module.exports = msgHandler = async (client, message) => {
                         });
 
                     
-                    })
+                    }
                     
 
                 } else (
