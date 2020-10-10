@@ -20,7 +20,7 @@ const start = async (client = new Client()) => {
         console.log('[SERVER] Server Started!')
         // Force it to keep the current session
         client.onStateChanged((state) => {
-            console.log('[Client State]', state)
+            console.log('[Cliet State]', state)
             if (state === 'CONFLICT' || state === 'UNLAUNCHED') client.forceRefocus()
         })
         // listening on message
