@@ -110,10 +110,7 @@ module.exports = msgHandler = async (client, message) => {
                     const nuberof = Math.floor((Math.random()*1000000) + 1)
                     const filename = `./media/${nuberof}.${mimetype.split('/')[1]}`
 
-                    fs.writeFile(`./media/${nuberof}.gif`, 'gif', function (err) {
-                        if (err) throw err;
-                            console.log('File is created successfully.');
-                    }); 
+                    await exec(`cp ./media/output.gif ./media/${nuberof}.gif`)
 
                     await fs.writeFileSync(filename, mediaData)
                     console.log('1')
