@@ -107,7 +107,7 @@ module.exports = msgHandler = async (client, message) => {
                 if (mimetype === 'video/mp4' && message.duration < 10 || mimetype === 'image/gif' && message.duration < 10) {
                     const mediaData = await decryptMedia(message, uaOverride)
                     client.sendText(from, '[Espere] Transformando sua midia em um Sticker +- 1Minuto, caso nao responda em 1 minuto essa midia nao pode ser transformada em stricker devido as regras do whatsapp')
-                    const nuberof = Math.floor((Math.random()*1000) + 1)
+                    const nuberof = Math.floor((Math.random()*1000000) + 1)
                     const filename = `./media/${nuberof}.${mimetype.split('/')[1]}`
                     await fs.writeFileSync(filename, mediaData)
                     console.log('1')
@@ -117,20 +117,12 @@ module.exports = msgHandler = async (client, message) => {
                         console.log('3')
                         await client.sendImageAsSticker(from, `data:image/gif;base64,${gif.toString('base64')}`)
                         console.log('4')
-                        await exec(`rm ${filename}`)
-                        console.log('5')
-                        await exec(`rm ./media/${nuberof}.gif`)
-                        console.log('6')
                     })
-
-
-
-
-
 
                 } else (
                     client.sendText(from, '[❗] Utilizar gif/videos de até 10s!')
                 )
+                
             }
             break
 
@@ -139,6 +131,7 @@ module.exports = msgHandler = async (client, message) => {
         case '!help':
         case '!ajuda':
             client.sendText(from, help)
+            break
 
         
         case '!ig':
