@@ -45,7 +45,7 @@ module.exports = msgHandler = async (client, message) => {
                 Yt4: '[❗] Terjadi kesalahan, mungkin error di sebabkan oleh sistem.',
                 Ig: '[❗] Midia esta em uma conta privada',
                 Ki: '[❗] Bot tidak bisa mengeluarkan admin group!',
-                Ad: '[❗] Tidak dapat menambahkan target, mungkin karena di private',
+                Ad: '[❗] Tiak dapat menambahkan target, mungkin karena di private',
                 Iv: '[❗] Link não é do instagram!'
             }
         }
