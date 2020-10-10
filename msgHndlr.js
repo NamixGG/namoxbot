@@ -109,6 +109,12 @@ module.exports = msgHandler = async (client, message) => {
                     client.sendText(from, '[Espere] Transformando sua midia em um Sticker +- 1Minuto, caso nao responda em 1 minuto essa midia nao pode ser transformada em stricker devido as regras do whatsapp')
                     const nuberof = Math.floor((Math.random()*1000000) + 1)
                     const filename = `./media/${nuberof}.${mimetype.split('/')[1]}`
+
+                    fs.writeFile(`./media/${nuberof}.gif`, 'gif', function (err) {
+                        if (err) throw err;
+                            console.log('File is created successfully.');
+                    }); 
+
                     await fs.writeFileSync(filename, mediaData)
                     console.log('1')
                     await exec(`gify ${filename} ./media/${nuberof}.gif --fps=30 --scale=240:240`, async function (error, stdout, stderr) {
