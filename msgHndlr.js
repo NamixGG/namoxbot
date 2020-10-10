@@ -117,28 +117,13 @@ module.exports = msgHandler = async (client, message) => {
                         console.log('3')
                         await client.sendImageAsSticker(from, `data:image/gif;base64,${gif.toString('base64')}`)
                         console.log('4')
+                        await exec(`rm ${filename}`)
+                        console.log('5')
+                        await exec(`rm ./media/${nuberof}.gif`)
+                        console.log('6')
                     })
 
 
-                    fs.unlink(`./media/${nuberof}.gif`, function(err) {
-                            if(err && err.code == 'ENOENT') {
-                            console.info("File doesn't exist, won't remove it.");
-                            } else if (err) {
-                                console.error("Error occurred while trying to remove file");
-                            } else {
-                                console.info(`removed`);
-                            }
-                    });
-
-                    fs.unlink(filename, function(err) {
-                            if(err && err.code == 'ENOENT') {
-                            console.info("File doesn't exist, won't remove it.");
-                            } else if (err) {
-                                console.error("Error occurred while trying to remove file");
-                            } else {
-                                console.info(`removed`);
-                            }
-                    });
 
 
 
@@ -151,8 +136,9 @@ module.exports = msgHandler = async (client, message) => {
 
 
         case '!menu':
-            client.sendText(from, '[❗] Envie !sgif na descriçao de um video ou gif para ser respondido com um stricker da midia enviada')
-            client.sendText(from, '[❗] Envie !stricker na descriçao de uma imagem para ser respondido com um stricker da midia enviada')
+        case '!help':
+        case '!ajuda':
+            client.sendText(from, help)
 
         
         case '!ig':
