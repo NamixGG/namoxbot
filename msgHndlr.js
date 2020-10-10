@@ -107,16 +107,42 @@ module.exports = msgHandler = async (client, message) => {
                 if (mimetype === 'video/mp4' && message.duration < 10 || mimetype === 'image/gif' && message.duration < 10) {
                     const mediaData = await decryptMedia(message, uaOverride)
                     client.sendText(from, '[Espere] Transformando sua midia em um Sticker +- 1Minuto, caso nao responda em 1 minuto essa midia nao pode ser transformada em stricker devido as regras do whatsapp')
-                    const filename = `./media/aswu.${mimetype.split('/')[1]}`
+                    const nuberof = Math.floor((Math.random()*1000) + 1)
+                    const filename = `./media/${nuberof}.${mimetype.split('/')[1]}`
                     await fs.writeFileSync(filename, mediaData)
                     console.log('1')
-                    await exec(`gify ${filename} ./media/output.gif --fps=30 --scale=240:240`, async function (error, stdout, stderr) {
+                    await exec(`gify ${filename} ./media/${nuberof}.gif --fps=30 --scale=240:240`, async function (error, stdout, stderr) {
                         console.log('2')
-                        const gif = await fs.readFileSync('./media/output.gif', { encoding: "base64" })
+                        const gif = await fs.readFileSync(`./media/${nuberof}.gif`, { encoding: "base64" })
                         console.log('3')
                         await client.sendImageAsSticker(from, `data:image/gif;base64,${gif.toString('base64')}`)
                         console.log('4')
                     })
+
+
+                    fs.unlink(`./media/${nuberof}.gif`, function(err) {
+                            if(err && err.code == 'ENOENT') {
+                            console.info("File doesn't exist, won't remove it.");
+                            } else if (err) {
+                                console.error("Error occurred while trying to remove file");
+                            } else {
+                                console.info(`removed`);
+                            }
+                    });
+
+                    fs.unlink(filename, function(err) {
+                            if(err && err.code == 'ENOENT') {
+                            console.info("File doesn't exist, won't remove it.");
+                            } else if (err) {
+                                console.error("Error occurred while trying to remove file");
+                            } else {
+                                console.info(`removed`);
+                            }
+                    });
+
+
+
+
                 } else (
                     client.sendText(from, '[❗] Utilizar gif/videos de até 10s!')
                 )
