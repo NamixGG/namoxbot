@@ -1,6 +1,5 @@
 const { decryptMedia } = require('@open-wa/wa-decrypt')
 const fs = require('fs-extra')
-const axios = require('axios')
 const moment = require('moment-timezone')
 const color = require('./lib/color')
 const { spawn, exec } = require('child_process')
