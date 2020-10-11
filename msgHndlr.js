@@ -2,14 +2,12 @@ const { decryptMedia } = require('@open-wa/wa-decrypt')
 const fs = require('fs-extra')
 const axios = require('axios')
 const moment = require('moment-timezone')
-const get = require('got')
 const color = require('./lib/color')
 const { spawn, exec } = require('child_process')
 const { liriklagu, quotemaker, randomNimek, fb, sleep, jadwalTv, ss } = require('./lib/functions')
 const { help, snk, info, donate, readme, listChannel } = require('./lib/help')
 const { stdout } = require('process')
-const nsfw_ = JSON.parse(fs.readFileSync('./lib/NSFW.json'))
-const welkom = JSON.parse(fs.readFileSync('./lib/welcome.json'))
+
 
 moment.tz.setDefault('Asia/Jakarta').locale('id')
 
@@ -62,7 +60,6 @@ module.exports = msgHandler = async (client, message) => {
         const ownerNumber = '5512992025029'
         const isOwner = sender.id === sender.id
         const isBlocked = blockNumber.includes(sender.id)
-        const isNsfw = isGroupMsg ? nsfw_.includes(chat.id) : false
         const uaOverride = 'WhatsApp/2.2029.4 Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36'
         const isUrl = new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/gi)
         
@@ -130,24 +127,6 @@ module.exports = msgHandler = async (client, message) => {
             break
 
 
-
-        
-        case '!ig':
-            if (args.length === 1) return client.sendText(from, 'Para baixar videos ou imagems do instagram envie "!ig + link do video ou foto"')
-            if (!args[1].match(isUrl) && !args[1].includes('instagram.com')) return client.sendText(from, mess.error.Iv)
-            try {
-                client.reply(from, mess.wait, id)
-                const resp = await get.get('https://mhankbarbar.herokuapp.com/api/ig?url='+ args[1]).json()
-                if (resp.result.includes('.mp4')) {
-                    var ext = '.mp4'
-                } else {
-                    var ext = '.jpg'
-                }
-                await client.sendFileFromUrl(from, resp.result, `igeh${ext}`, '', id)
-            } catch {
-                client.reply(from, mess.error.Ig, id)
-                }
-            break
         
        
         }
