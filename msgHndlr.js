@@ -6,7 +6,8 @@ const { spawn, exec } = require('child_process')
 const { liriklagu, quotemaker, randomNimek, fb, sleep, jadwalTv, ss } = require('./lib/functions')
 const { help, snk, info, donate, readme, listChannel } = require('./lib/help')
 const { stdout } = require('process')
-
+const yt = require('./lib/yt')
+const sendSticker = require('./lib/sendSticker')
 
 moment.tz.setDefault('Asia/Jakarta').locale('id')
 
@@ -104,23 +105,14 @@ module.exports = msgHandler = async (client, message) => {
         case '!sgif':
 
             if (isMedia) {
-                if (mimetype === 'video/mp4' && message.duration < 10 || mimetype === 'image/gif' && message.duration < 10) {
+                if (mimetype === 'video/mp4' && message.duration < 15 || mimetype === 'image/gif' && message.duration < 15) {
                     const mediaData = await decryptMedia(message, uaOverride)
                     client.reply(from, '📣 Trabalhando Nisso.....',id);
-                    var randname = makeid(10);
-                    var gifname = (`${randname}.gif`)
-                    const filename = `./media/${randname}.${mimetype.split('/')[1]}`
-                    await fs.writeFileSync(filename, mediaData)
-                    fs.copyFile('./media/output.gif', `./media/${randname}.gif`, (err) => {
-                        if (err) throw err;
-                        console.log(`${gifname} Criado!`);
-                    });
 
-                    await exec(`gify ${filename} ./media/${randname}.gif --fps=30 --scale=240:240`, async function (error, stdout, stderr) {
-                        const gif = await fs.readFileSync(`./media/${randname}.gif`, { encoding: "base64" })
-                        await client.sendImageAsSticker(from, `data:image/gif;base64,${gif.toString('base64')}`)
-                    });
-                    client.sendText(from, '📢 Comando em Manutenção.')
+                    sendSticker.sendAnimatedSticker(message)
+
+                    
+                    //client.sendText(from, '📢 Comando em Manutenção.')
 
                 } else (client.sendText(from, '📢 Utilizar GIFs ou Videos de até 10s!'));
             }
