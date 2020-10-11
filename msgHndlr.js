@@ -120,10 +120,10 @@ module.exports = msgHandler = async (client, message) => {
                         console.log(`${gifname} Criado!`);
                     });
 
-                    const gif = await fs.readFileSync(`./media/${randname}.gif`, { encoding: "base64" })
-                    await client.sendImageAsSticker(from, `data:image/gif;base64,${gif.toString('base64')}`)
-                    
-
+                    await exec(`gify ${filename} ./media/${randname}.gif --fps=30 --scale=240:240`, async function (error, stdout, stderr) {
+                        const gif = await fs.readFileSync(`./media/${randname}.gif`, { encoding: "base64" })
+                        await client.sendImageAsSticker(from, `data:image/gif;base64,${gif.toString('base64')}`)
+                    });
 
                 } else (client.sendText(from, '📢 Utilizar GIFs ou Videos de até 10s!'));
             }
