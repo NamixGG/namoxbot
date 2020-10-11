@@ -5,8 +5,6 @@ const moment = require('moment-timezone')
 const get = require('got')
 const color = require('./lib/color')
 const { spawn, exec } = require('child_process')
-const nhentai = require('nhentai-js')
-const { API } = require('nhentai-api')
 const { liriklagu, quotemaker, randomNimek, fb, sleep, jadwalTv, ss } = require('./lib/functions')
 const { help, snk, info, donate, readme, listChannel } = require('./lib/help')
 const { stdout } = require('process')
@@ -124,7 +122,7 @@ module.exports = msgHandler = async (client, message) => {
 
                     await exec(`gify ${filename} ./media/${randname}.gif --fps=30 --scale=240:240`, async function (error, stdout, stderr) {
                         const gif = await fs.readFileSync(`./media/${randname}.gif`, { encoding: "base64" })
-                        
+
                         await client.sendImageAsSticker(from, `data:image/gif;base64,${gif.toString('base64')}`)
                     });
 
