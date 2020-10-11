@@ -34,8 +34,8 @@ module.exports = msgHandler = async (client, message) => {
         const mess = {
             wait: 'Processando.....',
             error: {
-                St: '📢 Ocorreu um erro no processo, Tente novamente',
-                Ig: '📢 Midia esta em uma conta privada',
+                St: '📢 Ocorreu um erro no processo, Tente novamente.',
+                Ig: '📢 Midia esta em uma conta privada.',
                 Iv: '📢 Link não é do instagram!'
             }
         }
@@ -120,7 +120,7 @@ module.exports = msgHandler = async (client, message) => {
                         const gif = await fs.readFileSync(`./media/${randname}.gif`, { encoding: "base64" })
                         await client.sendImageAsSticker(from, `data:image/gif;base64,${gif.toString('base64')}`)
                     });
-                    client.sendText(from, '📢 Comando em Manutenção')
+                    client.sendText(from, '📢 Comando em Manutenção.')
 
                 } else (client.sendText(from, '📢 Utilizar GIFs ou Videos de até 10s!'));
             }
