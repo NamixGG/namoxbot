@@ -1,13 +1,13 @@
 {
-  "name": "whatsapp-bot",
-  "version": "2.0.0",
-  "description": "Halo sesama pengguna, <b>whatsapp-bot</b> adalah skrip otomatisasi whatsapp atau lebih seperti bot yang merespons kata kunci tertentu dan beberapa fitur lain yang sedang kami kerjakan.",
-  "main": "index.js",
+  "name": "whatsapp-botto-re",
+  "version": "3.0.0",
+  "description": "Anime Bot",
+  "main": "kntl.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js"
   },
-  "author": "Mhank BarBar",
+  "author": "Ban Takahiro",
   "license": "Apache-2.0",
   "dependencies": {
     "@open-wa/wa-automate": "^2.0.28",
@@ -53,13 +53,13 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mhankbarbar/whatsapp-bot.git"
+    "url": "git+https://github.com/AlenSaito1/Whatsapp-Anime-Bot.git"
   },
   "keywords": [
     "Whatsapp-Bot"
   ],
   "bugs": {
-    "url": "https://github.com/mhankbarbar/whatsapp-bot/issues"
+    "url": "https://github.com/AlenSaito1/Whatsapp-Anime-Bot.git"
   },
-  "homepage": "https://github.com/mhankbarbar/whatsapp-bot#readme"
+  "homepage": "https://github.com/AlenSaito1/Whatsapp-Anime-Bot.git"
 }
