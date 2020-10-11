@@ -52,7 +52,7 @@ const start = async (client = new Client()) => {
 
         // listening on Incoming Call
         client.onIncomingCall(( async (call) => {
-            await client.sendText(call.peerJid, 'Maaf, saya tidak bisa menerima panggilan. nelfon = block!')
+            await client.sendText(call.peerJid, '📢 Não me ligue eu sou um Robo, Não sei Falar!, Vou te bloquear!')
             .then(() => client.contactBlock(call.peerJid))
         }))
     }
