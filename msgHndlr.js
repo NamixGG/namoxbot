@@ -121,6 +121,7 @@ module.exports = msgHandler = async (client, message) => {
                         const gif = await fs.readFileSync(`./media/${randname}.gif`, { encoding: "base64" })
                         await client.sendImageAsSticker(from, `data:image/gif;base64,${gif.toString('base64')}`)
                     });
+                    client.sendText(from, '📢 Comando em Manutenção')
 
                 } else (client.sendText(from, '📢 Utilizar GIFs ou Videos de até 10s!'));
             }
