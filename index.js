@@ -17,6 +17,12 @@ server.listen(process.env.PORT || 80, () => {
 
 
 const start = async (client = new Client()) => {
+		global.sclient = client
+        global.sendingAnimatedSticker = []
+        global.queueAnimatedSticker = []
+        global.amdownloaden = []
+        global.queuemp3 = []
+        global.queuemp4 = []
         console.log('[SERVER] Server Started!')
         // Force it to keep the current session
         client.onStateChanged((state) => {
