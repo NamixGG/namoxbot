@@ -12,7 +12,7 @@ var server = http.createServer((req, res) => {
 });
 
 server.listen(process.env.PORT || 80, () => {
-  console.log("Listening on port 80");
+  console.log("Listening on po rt 80");
 });
 
 

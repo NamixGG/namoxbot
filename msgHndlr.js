@@ -121,7 +121,7 @@ module.exports = msgHandler = async (client, message) => {
                         //await client.sendImageAsSticker(from, `data:image/gif;base64,${gif.toString('base64')}`)
                     });
 
-                } else (client.sendText(from, '📢 Utilizar GIFs ou Videos de até 10s!'));
+                } else (client.sendText(from, ' 📢 Utilizar GIFs ou Videos de até 10s!'));
             }
             break
 
