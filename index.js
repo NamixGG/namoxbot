@@ -16,6 +16,7 @@ server.listen(process.env.PORT || 80, () => {
 });
 
 
+
 const start = async (client = new Client()) => {
 		global.sclient = client
         global.sendingAnimatedSticker = []

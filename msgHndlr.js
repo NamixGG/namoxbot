@@ -103,20 +103,28 @@ module.exports = msgHandler = async (client, message) => {
         case '!stickergif':
         case '!stikergif':
         case '!sgif':
-
             if (isMedia) {
-                if (mimetype === 'video/mp4' && message.duration < 15 || mimetype === 'image/gif' && message.duration < 15) {
+                if (mimetype === 'video/mp4' && message.duration < 10 || mimetype === 'image/gif' && message.duration < 10) {
                     const mediaData = await decryptMedia(message, uaOverride)
                     client.reply(from, '📣 Trabalhando Nisso.....',id);
+                    var randname = makeid(10);
+                    var gifname = (`${randname}.gif`)
+                    const filename = `./media/${randname}.${mimetype.split('/')[1]}`
+                    await fs.writeFileSync(filename, mediaData)
+                    fs.copyFile('./media/output.gif', `./media/${randname}.gif`, (err) => {
+                        if (err) throw err;
+                        console.log('File was copied to destination');
+                    });
 
-                    sendSticker.sendAnimatedSticker(message)
-
-                    
-                    //client.sendText(from, '📢 Comando em Manutenção.')
+                    await exec(`gify ${filename} ./media/${randname}.gif --fps=30 --scale=240:240`, async function (error, stdout, stderr) {
+                        const gif = await fs.readFileSync(`./media/${randname}.gif`, { encoding: "base64" })
+                        //await client.sendImageAsSticker(from, `data:image/gif;base64,${gif.toString('base64')}`)
+                    });
 
                 } else (client.sendText(from, '📢 Utilizar GIFs ou Videos de até 10s!'));
             }
             break
+
 
 
         
